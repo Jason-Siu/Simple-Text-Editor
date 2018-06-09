@@ -14,75 +14,75 @@ namespace WindowsFormsApplication1
     {
         public Form1()
         {
-            InitializeComponent();
+            InitializeComponent(); // load the application
         }
 
 
-        private void openToolStripButton_Click(object sender, EventArgs e)
+        private void openToolStripButton_Click(object sender, EventArgs e) // open button click even
         {
-            if(openFileDialog1.ShowDialog() == DialogResult.OK)
+            if(openFileDialog1.ShowDialog() == DialogResult.OK) // if clicked
             {
-                System.IO.StreamReader reader = new System.IO.StreamReader(openFileDialog1.FileName);
-                if(openFileDialog1.FileName.Contains(".rtf"))
+                System.IO.StreamReader reader = new System.IO.StreamReader(openFileDialog1.FileName); // open filw window
+                if(openFileDialog1.FileName.Contains(".rtf")) // if file chosen if rtf
                 {
                     richTextBox1.Rtf = reader.ReadToEnd();
                 }
                 else
                 {
-                    richTextBox1.Text = reader.ReadToEnd();
+                    richTextBox1.Text = reader.ReadToEnd(); // if its txt extension
                 }
-                reader.Close();
+                reader.Close(); // close stream
                 Text = openFileDialog1.FileName;
             }
         }
 
-        private void saveToolStripButton_Click(object sender, EventArgs e)
+        private void saveToolStripButton_Click(object sender, EventArgs e) // save click button event
         {
-            if(saveFileDialog1.ShowDialog() == DialogResult.OK)
+            if(saveFileDialog1.ShowDialog() == DialogResult.OK) // if you clicked this button
             {
-                System.IO.StreamWriter writer = new System.IO.StreamWriter(saveFileDialog1.FileName);
-                if(saveFileDialog1.FileName.Contains(".rtf"))
+                System.IO.StreamWriter writer = new System.IO.StreamWriter(saveFileDialog1.FileName); // initialize writer object
+                if(saveFileDialog1.FileName.Contains(".rtf")) // if has extension rtf, save to rtf
                 {
                     writer.Write(richTextBox1.Rtf);
                 }
                 else
                 {
-                    writer.Write(richTextBox1.Text);
+                    writer.Write(richTextBox1.Text); // else save as txt
                 }
-                writer.Close();
+                writer.Close(); // close stream
                 Text = saveFileDialog1.FileName;
             }
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void Form1_Load(object sender, EventArgs e) // load file
         {
-            Text = "Untitled";
+            Text = "Untitled"; // if you load text is untitled
         }
 
-        private void newToolStripButton_Click(object sender, EventArgs e)
+        private void newToolStripButton_Click(object sender, EventArgs e) // new file
         {
-            Text = "Untitled";
-            richTextBox1.Text = "";
+            Text = "Untitled"; // title is untitled
+            richTextBox1.Text = ""; // clears box
             richTextBox1.Rtf = "";
             richTextBox1.Select();
         }
 
-        private void cutToolStripButton_Click(object sender, EventArgs e)
+        private void cutToolStripButton_Click(object sender, EventArgs e) // cut event
         {
             richTextBox1.Cut();
         }
 
-        private void copyToolStripButton_Click(object sender, EventArgs e)
+        private void copyToolStripButton_Click(object sender, EventArgs e) // copy event
         {
             richTextBox1.Copy();
         }
 
-        private void pasteToolStripButton_Click(object sender, EventArgs e)
+        private void pasteToolStripButton_Click(object sender, EventArgs e) // paste event
         {
             richTextBox1.Paste();
         }
 
-        private void newToolStripMenuItem_Click(object sender, EventArgs e)
+        private void newToolStripMenuItem_Click(object sender, EventArgs e) // new file from the menu
         {
             Text = "Untitled";
             richTextBox1.Text = "";
@@ -90,7 +90,7 @@ namespace WindowsFormsApplication1
             richTextBox1.Select();
         }
 
-        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        private void openToolStripMenuItem_Click(object sender, EventArgs e) // open from menu
         {
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
@@ -108,9 +108,9 @@ namespace WindowsFormsApplication1
             }
         }
 
-        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e) // save button click event
         {
-            if(Text == "Untitled")
+            if(Text == "Untitled") // if it is named untitled
             {
                 if (saveFileDialog1.ShowDialog() == DialogResult.OK)
                 {
